@@ -1,5 +1,6 @@
 package atividade.calculoIMC.Controller;
 
+import atividade.calculoIMC.Model.M_Resultados;
 import atividade.calculoIMC.Service.S_CalculoIMC;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +18,9 @@ public class C_Imc {
 
     @PostMapping("/")
     public String dadosCalculo(@RequestParam("altura") String altura, @RequestParam("peso") String peso, Model model) {
-        S_CalculoIMC.calculo(altura, peso, model);
+        M_Resultados m_resultados = S_CalculoIMC.calculo(altura, peso);
+        model.addAttribute("mensagem", m_resultados.getMensagem());
+        model.addAttribute("resultado", m_resultados.getResultado());
         return "Home/home";
     }
 }
