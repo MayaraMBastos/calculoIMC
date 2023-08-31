@@ -28,7 +28,8 @@ public class S_CalculoIMC {
             mensagem+="Sua Classificação é Obesidade Grave III";
         }
 
-        M_Resultados m_resultado = new M_Resultados(mensagem,String.valueOf(resultado));
+
+        M_Resultados m_resultado = new M_Resultados(mensagem,(String.valueOf(resultado)));
         return m_resultado;
     }
 
